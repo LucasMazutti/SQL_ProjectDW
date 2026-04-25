@@ -129,9 +129,7 @@ Uso de ferramentas de orquestração
 Migração para ambiente cloud
 
 👤 Autor
-
 Lucas Mazutti
 Estudante de Ciência da Computação | Dados & BI
-📌 Foco em SQL, Data Engineering e Business Intelligence
 
-🔗 LinkedIn: (adicione aqui)
+🔗 LinkedIn: (https://www.linkedin.com/in/lucas-m-grabarski-3472521b8/)
