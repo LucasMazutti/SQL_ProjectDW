@@ -1,3 +1,5 @@
+-- Criação esquemas Medallion Architecture.
+
 CREATE SCHEMA bronze;
 GO
 CREATE SCHEMA silver;
