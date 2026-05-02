@@ -1,6 +1,9 @@
 CREATE OR ALTER PROCEDURE bronze.load_bronze AS 
 BEGIN
+	DECLARE @start_time DATETIME, @end_time DATETIME, @start_all DATETIME, @end_all DATETIME;
 	BEGIN TRY
+		SET @start_all = GETDATE();
+		SET @start_time = GETDATE();
 		TRUNCATE TABLE bronze.crm_cust_info;
 
 		BULK INSERT bronze.crm_cust_info
@@ -10,9 +13,11 @@ BEGIN
 			FIELDTERMINATOR = ',',
 			TABLOCK
 		);
-
-		-- select COUNT(*) from bronze.crm_cust_info
-
+		SET @end_time = GETDATE();
+		PRINT 'Duration: ' + CAST(DATEDIFF(second, @start_time, @end_time) AS NVARCHAR) + ' seconds';
+		PRINT '================================'
+		
+		SET @start_time = GETDATE();
 		TRUNCATE TABLE bronze.crm_prd_info;
 
 		BULK INSERT bronze.crm_prd_info
@@ -22,9 +27,11 @@ BEGIN
 			FIELDTERMINATOR = ',',
 			TABLOCK
 		);
+		SET @end_time = GETDATE();
+		PRINT 'Duration: ' + CAST(DATEDIFF(second, @start_time, @end_time) AS NVARCHAR) + ' seconds';
+		PRINT '================================'
 
-		-- SELECT * FROM bronze.crm_prd_info
-
+		SET @start_time = GETDATE();
 		TRUNCATE TABLE bronze.crm_sales_details
 
 		BULK INSERT bronze.crm_sales_details
@@ -34,9 +41,11 @@ BEGIN
 			FIELDTERMINATOR = ',',
 			TABLOCK
 		);
+		SET @end_time = GETDATE();
+		PRINT 'Duration: ' + CAST(DATEDIFF(second, @start_time, @end_time) AS NVARCHAR) + ' seconds';
+		PRINT '================================'
 
-		-- SELECT * FROM bronze.crm_sales_details
-
+		SET @start_time = GETDATE();
 		TRUNCATE TABLE bronze.erp_cust_az12;
 
 		BULK INSERT bronze.erp_cust_az12
@@ -46,9 +55,11 @@ BEGIN
 			FIELDTERMINATOR = ',',
 			TABLOCK
 		);
+		SET @end_time = GETDATE();
+		PRINT 'Duration: ' + CAST(DATEDIFF(second, @start_time, @end_time) AS NVARCHAR) + ' seconds';
+		PRINT '================================'
 
-		-- SELECT * FROM bronze.erp_cust_az12
-
+		SET @start_time = GETDATE();
 		TRUNCATE TABLE bronze.erp_loc_a101;
 
 		BULK INSERT bronze.erp_loc_a101
@@ -58,9 +69,11 @@ BEGIN
 			FIELDTERMINATOR = ',',
 			TABLOCK
 		);
+		SET @end_time = GETDATE();
+		PRINT 'Duration: ' + CAST(DATEDIFF(second, @start_time, @end_time) AS NVARCHAR) + ' seconds';
+		PRINT '================================'
 
-		-- SELECT * FROM bronze.erp_loc_a101
-
+		SET @start_time = GETDATE();
 		TRUNCATE TABLE bronze.erp_px_cat_g1v2
 
 		BULK INSERT bronze.erp_px_cat_g1v2
@@ -70,8 +83,13 @@ BEGIN
 			FIELDTERMINATOR = ',',
 			TABLOCK
 		);
+		SET @end_time = GETDATE();
+		PRINT 'Duration: ' + CAST(DATEDIFF(second, @start_time, @end_time) AS NVARCHAR) + ' seconds';
+		PRINT '================================'
 
-		-- SELECT * FROM bronze.erp_px_cat_g1v2
+		SET @end_all = GETDATE()
+		PRINT 'All duration: ' + CAST(DATEDIFF(second, @start_all, @end_all) AS NVARCHAR) + ' second';
+
 	END TRY
 	BEGIN CATCH 
 		PRINT'Error ocurred during loading bromze layer'
