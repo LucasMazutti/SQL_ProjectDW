@@ -1,5 +1,8 @@
 -- Tratando tabela az12
 
+PRINT'>>Truncating table<<'
+TRUNCATE TABLE silver.erp_cust_az12;
+PRINT'>>Inserting table<<'
 INSERT INTO silver.erp_cust_az12(
 	cid,
 	bdate,
@@ -29,7 +32,6 @@ WHERE bdate > getdate()
 SELECT DISTINCT 
 gen
 FROM bronze.erp_cust_az12
-
 
 
 

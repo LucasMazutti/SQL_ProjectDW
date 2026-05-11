@@ -1,5 +1,9 @@
 -- tratando a base de dados carregada
 
+
+PRINT'>>Truncate table<<'
+TRUNCATE TABLE silver.crm_cust_info;
+PRINT'>>Inserting Table'
 INSERT INTO silver.crm_cust_info(
 cst_id,
 cst_key,
@@ -7,8 +11,8 @@ cst_firstname,
 cst_lastname,
 cst_material_status,
 cst_gndr,
-cst_create_date)
-
+cst_create_date
+)
 SELECT 
 cst_id,
 cst_key,

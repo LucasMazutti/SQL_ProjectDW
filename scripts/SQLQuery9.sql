@@ -1,5 +1,8 @@
 -- transformando tabela prd_info
 
+PRINT'>>Truncating Table<<'
+TRUNCATE TABLE silver.crm_prd_info;
+PRINT'>>Inserting Table<<'
 INSERT INTO silver.crm_prd_info(
 	prd_id,
 	cat_id,

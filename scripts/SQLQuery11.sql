@@ -1,6 +1,8 @@
-SELECT *
-FROM bronze.crm_sales_details
- 
+
+
+PRINT'>>Truncating Table<<'
+TRUNCATE TABLE silver.crm_sales_details;
+PRINT'>>Inserting table<<'
 INSERT INTO silver.crm_sales_details(
 	sls_ord_num,
 	sls_prd_key,
